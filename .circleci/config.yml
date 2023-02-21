@@ -5,7 +5,8 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: node:19.6.1
+      - image: node:alpine
+      - image: circleci/cci-demo-docker-primary:0.0.1
 
     working_directory: ~/repo
 
