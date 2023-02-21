@@ -11,5 +11,9 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker
+      - run:
+          name: Does docker even exist
+          command: docker -v
 
       - run: docker build -t adelelfar256/docker-react -f Dockerfile.dev .
