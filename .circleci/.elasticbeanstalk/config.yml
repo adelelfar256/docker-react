@@ -1,0 +1,9 @@
+branch-defaults:
+  master:
+    environment: Docker-env
+global:
+  application_name: docker
+  default_ec2_keyname: e-pkqgxtzywm
+  default_platform: Docker
+  default_region: us-east-1
+  sc: git
