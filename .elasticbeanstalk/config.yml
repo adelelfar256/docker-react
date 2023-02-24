@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: Docker-env
+    environment: Docker1-env
 global:
-  application_name: docker
-  default_ec2_keyname: e-pkqgxtzywm
-  default_platform: Docker
+  application_name: Docker-1
+  default_ec2_keyname: e-rrn5xeuide
+  default_platform: Docker running on 64bit Amazon Linux 2
   default_region: us-east-1
   sc: git

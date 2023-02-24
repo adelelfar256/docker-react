@@ -4,7 +4,7 @@ orbs:
 jobs:
   eb-demo:
     docker:
-      - image: 'cimg/base:stable'
+      - image: "cimg/base:stable"
     steps:
       - checkout
       - setup_remote_docker
@@ -19,14 +19,13 @@ jobs:
             sudo apt-get -y -qq update
             sudo apt-get install python3-pip python-dev-is-python2 build-essential
             sudo pip install  setuptools
-            sudo pip install awsebcli 
+            sudo pip install awsebcli
       #- run: yes n | eb init
       - run:
           name: Deploying
-          command: eb deploy Docker-env
+          command: eb deploy Docker1-env
 workflows:
   elastic-beanstalk-workflow:
-    
     jobs:
       - eb-demo:
           context: aws
