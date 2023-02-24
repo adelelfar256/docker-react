@@ -20,10 +20,10 @@ jobs:
             sudo apt-get install python3-pip python-dev-is-python2 build-essential
             sudo pip install  setuptools
             sudo pip install awsebcli 
-      - run: eb init
+      - run: yes y | eb init
       - run:
           name: Deploying
-          command: eb deploy Docker-env
+          command: yes y |eb deploy Docker-env
 workflows:
   elastic-beanstalk-workflow:
     jobs:
