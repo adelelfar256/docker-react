@@ -12,14 +12,15 @@ jobs:
           name: Does docker even exist
           command: docker -v
       - run: docker build -t adelelfar256/docker-react -f Dockerfile.dev .
-
+      - run: eb init
+      - run:
+          name: Deploying
+          command: eb deploy Docker-env
 workflows:
   elastic-beanstalk-workflow:
     jobs:
-      - eb-demo
-      - eb/deploy:
+      - eb-demo:
           context: aws
-          environment-name: Docker-env
           filters:
             branches:
               only:
