@@ -12,14 +12,15 @@ jobs:
           name: Does docker even exist
           command: docker -v
       - run: docker build -t adelelfar256/docker-react -f Dockerfile.dev .
-      - eb/setup
-      - run:
-          command: |
-            eb create Docker-env
-            eb deploy Docker-env
-            eb status
-          name: You may now use the EB CLI within this job
+
 workflows:
   elastic-beanstalk-workflow:
     jobs:
       - eb-demo
+      - eb/deploy:
+          context: aws
+          environment-name: Docker-env
+          filters:
+            branches:
+              only:
+                - master
