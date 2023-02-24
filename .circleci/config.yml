@@ -18,8 +18,8 @@ jobs:
           command: |
             sudo apt-get -y -qq update
             sudo apt-get install python3-pip python-dev-is-python2 build-essential
-            sudo pip install --upgrade setuptools
-            sudo pip install awsebcli --upgrade
+            sudo pip install  setuptools
+            sudo pip install awsebcli 
       - run: eb init
       - run:
           name: Deploying
