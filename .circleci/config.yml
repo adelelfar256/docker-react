@@ -1,8 +1,10 @@
 version: 2.1
+orbs:
+  eb: circleci/aws-elastic-beanstalk@1.0.0
 jobs:
-  build-and-test:
+  eb-demo:
     docker:
-      - image: docker:17.03-git
+      - image: 'cimg/base:stable'
     steps:
       - checkout
       - setup_remote_docker
@@ -10,27 +12,14 @@ jobs:
           name: Does docker even exist
           command: docker -v
       - run: docker build -t adelelfar256/docker-react -f Dockerfile.dev .
-
+      - eb/setup
       - run:
-          name: Installing deployment dependencies
           command: |
-            sudo apt-get -y -qq update
-            sudo apt-get install python3-pip python-dev build-essential
-            sudo pip install --upgrade setuptools
-            sudo pip install awsebcli --upgrade
-      - run:
-          name: init eb
-          command: eb init
-      - run:
-          name: Deploying
-          command: eb deploy Docker-env
-
+            eb create Docker-env
+            eb deploy Docker-env
+            eb status
+          name: You may now use the EB CLI within this job
 workflows:
-  build-and-test:
+  elastic-beanstalk-workflow:
     jobs:
-      - build-and-test:
-          context: aws
-          filters:
-            branches:
-              only:
-                - master
+      - eb-demo
