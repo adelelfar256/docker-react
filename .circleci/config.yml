@@ -26,6 +26,7 @@ jobs:
           command: eb deploy Docker-env
 workflows:
   elastic-beanstalk-workflow:
+    
     jobs:
       - eb-demo:
           context: aws
